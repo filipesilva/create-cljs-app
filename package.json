@@ -1,0 +1,22 @@
+{
+  "name": "sample-app",
+  "version": "0.0.1",
+  "description": "",
+  "repository": "",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "shadow-cljs watch app",
+    "release": "shadow-cljs release app",
+    "clean": "rimraf public/js"
+  },
+  "devDependencies": {
+    "rimraf": "~3.0.0",
+    "shadow-cljs": "~2.8.64"
+  },
+  "dependencies": {
+    "create-react-class": "~15.6.3",
+    "react": "~16.10.2",
+    "react-dom": "~16.10.2"
+  }
+}
