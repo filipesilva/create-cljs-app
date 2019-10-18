@@ -1,18 +1,24 @@
-{:source-paths ["src"]
+{:source-paths ["src"
+                "e2e"]
 
- :dependencies [[reagent "0.8.1"]]
+ :dependencies [[reagent "0.8.1"]
+                [funcool/promesa "4.0.2"]]
 
  :nrepl        {:port 3333}
 
- :builds
- {:app {:target :browser
-        :output-dir "public/js"
-        :asset-path "/js"
+ :builds       {:app {:target :browser
+                      :output-dir "public/js"
+                      :asset-path "/js"
 
-        :modules
-        {:main
-         {:init-fn sample-app.core/main}}
+                      :modules
+                      {:main
+                       {:init-fn sample-app.core/main}}
 
-        :devtools
-        {:http-root   "public"
-         :http-port   3000}}}}
+                      :devtools
+                      {:http-root   "public"
+                       :http-port   3000}}
+
+                :e2e {:target :node-test
+                      :output-to "e2e/test.js"
+                      :ns-regexp "e2e.*"
+                      :autorun true}}}

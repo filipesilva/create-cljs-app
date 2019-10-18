@@ -6,13 +6,21 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "clean": "rimraf public/js",
+    "server": "shadow-cljs server",
     "dev": "shadow-cljs watch app",
     "release": "shadow-cljs release app",
-    "clean": "rimraf public/js"
+    "run-e2e": "shadow-cljs compile e2e",
+    "serve-e2e": "serve ./public/",
+    "e2e": "start-server-and-test serve-e2e http://localhost:5000 run-e2e"
   },
   "devDependencies": {
+    "http-server": "^0.11.1",
     "rimraf": "~3.0.0",
-    "shadow-cljs": "~2.8.64"
+    "serve": "^11.2.0",
+    "shadow-cljs": "~2.8.64",
+    "start-server-and-test": "^1.10.6",
+    "taiko": "^1.0.2"
   },
   "dependencies": {
     "create-react-class": "~15.6.3",
