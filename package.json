@@ -10,10 +10,11 @@
     "server": "shadow-cljs server",
     "dev": "shadow-cljs watch app",
     "release": "shadow-cljs release app",
+    "lint": "clj-kondo --lint src",
     "test": "shadow-cljs compile test",
+    "e2e": "start-server-and-test serve-e2e http://localhost:5000 run-e2e",
     "run-e2e": "shadow-cljs compile e2e",
-    "serve-e2e": "serve ./public/",
-    "e2e": "start-server-and-test serve-e2e http://localhost:5000 run-e2e"
+    "serve-e2e": "serve ./public/"
   },
   "devDependencies": {
     "http-server": "^0.11.1",
@@ -27,5 +28,8 @@
     "create-react-class": "~15.6.3",
     "react": "~16.10.2",
     "react-dom": "~16.10.2"
+  }, 
+  "optionalDependencies": {
+    "clj-kondo": "^2019.10.11-alpha"
   }
 }
