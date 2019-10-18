@@ -6,19 +6,19 @@
 
  :nrepl        {:port 3333}
 
- :builds       {:app {:target :browser
+ :builds       {:app {:target     :browser
                       :output-dir "public/js"
                       :asset-path "/js"
+                      :modules    {:main {:init-fn sample-app.core/main}}
+                      :devtools   {:http-root   "public"
+                                   :http-port   3000}}
+                
+                :test {:target    :node-test
+                       :output-to "out/test.js"
+                       :ns-regexp "sample-app.*-spec$"
+                       :autorun   true}
 
-                      :modules
-                      {:main
-                       {:init-fn sample-app.core/main}}
-
-                      :devtools
-                      {:http-root   "public"
-                       :http-port   3000}}
-
-                :e2e {:target :node-test
-                      :output-to "e2e/test.js"
+                :e2e {:target    :node-test
+                      :output-to "out/e2e.js"
                       :ns-regexp "e2e.*"
-                      :autorun true}}}
+                      :autorun   true}}}

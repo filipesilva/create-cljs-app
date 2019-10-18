@@ -10,6 +10,7 @@
     "server": "shadow-cljs server",
     "dev": "shadow-cljs watch app",
     "release": "shadow-cljs release app",
+    "test": "shadow-cljs compile test",
     "run-e2e": "shadow-cljs compile e2e",
     "serve-e2e": "serve ./public/",
     "e2e": "start-server-and-test serve-e2e http://localhost:5000 run-e2e"
