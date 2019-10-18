@@ -7,9 +7,10 @@
   "private": true,
   "scripts": {
     "clean": "rimraf public/js",
-    "server": "shadow-cljs server",
+    "start-server": "shadow-cljs start",
+    "stop-server": "shadow-cljs stop",
     "dev": "shadow-cljs watch app",
-    "release": "shadow-cljs release app",
+    "release": "yarn clean && shadow-cljs release app",
     "lint": "clj-kondo --lint src",
     "test": "shadow-cljs compile test",
     "e2e": "start-server-and-test serve-e2e http://localhost:5000 run-e2e",

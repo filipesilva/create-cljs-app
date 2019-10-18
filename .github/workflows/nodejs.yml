@@ -1,0 +1,34 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: Install
+      run: yarn
+    - name: Start background server
+      run: yarn start-server
+    - name: Lint
+      # Linting isn't supported on Windows because clj-kondo doesn't work there.
+      if: matrix.os != 'windows-latest'
+      run: yarn lint
+    - name: Test
+      run: yarn test
+    - name: E2E
+      run: |
+        yarn release
+        yarn e2e
+    - name: Stop background server
+      run: yarn stop-server        
+      env:
+        CI: true
