@@ -1,26 +1,21 @@
 {
   "name": "cljs-app",
-  "version": "0.0.1",
-  "description": "",
-  "repository": "",
-  "license": "MIT",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "shadow-cljs watch app",
     "build": "yarn clean && shadow-cljs release app",
     "lint": "clj-kondo --lint src",
-    "test": "shadow-cljs compile test",
+    "test": "shadow-cljs watch test",
+    "test:once": "shadow-cljs compile test",
     "e2e": "shadow-cljs compile e2e",
-    "clean": "rimraf public/js",
-    "server:start": "shadow-cljs start",
-    "server:stop": "shadow-cljs stop"
+    "clean": "rimraf public/js"
   },
   "devDependencies": {
-    "http-server": "^0.11.1",
     "rimraf": "~3.0.0",
-    "serve-handler": "^6.1.2",
+    "serve-handler": "~6.1.2",
     "shadow-cljs": "~2.8.64",
-    "taiko": "^1.0.2"
+    "taiko": "~1.0.2"
   },
   "dependencies": {
     "create-react-class": "~15.6.3",
