@@ -26,7 +26,7 @@ Lint code for known bad code patterns.
 
 See the [clj-kondo](https://github.com/borkdude/clj-kondo) for more information.
 
-Note: does not work on Windows currently.
+Note: does not work on Windows currently, see this [issue](https://github.com/filipesilva/create-cljs-app/issues/2) for a workaround.
 
 ### `yarn build`
 
