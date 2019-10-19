@@ -6,14 +6,14 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "clean": "rimraf public/js",
-    "start-server": "shadow-cljs start",
-    "stop-server": "shadow-cljs stop",
-    "dev": "shadow-cljs watch app",
-    "release": "yarn clean && shadow-cljs release app",
+    "start": "shadow-cljs watch app",
+    "build": "yarn clean && shadow-cljs release app",
     "lint": "clj-kondo --lint src",
     "test": "shadow-cljs compile test",
-    "e2e": "shadow-cljs compile e2e"
+    "e2e": "shadow-cljs compile e2e",
+    "clean": "rimraf public/js",
+    "server:start": "shadow-cljs start",
+    "server:stop": "shadow-cljs stop"
   },
   "devDependencies": {
     "http-server": "^0.11.1",
