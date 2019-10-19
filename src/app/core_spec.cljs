@@ -1,5 +1,5 @@
-(ns sample-app.core-spec
-  (:require [sample-app.core :refer [app]]
+(ns app.core-spec
+  (:require [app.core :refer [app]]
             [clojure.string :refer [includes?]]
             [cljs.test :refer-macros [deftest is]]))
 

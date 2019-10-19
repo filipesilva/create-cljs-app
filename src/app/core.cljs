@@ -1,10 +1,10 @@
-(ns sample-app.core
+(ns app.core
   (:require [reagent.core :as r]))
 
 (defn app
   []
   [:div
-    "sample-app is running!"])
+    "cljs-app is running!"])
 
 (defn ^:dev/after-load start
   []

@@ -7,7 +7,7 @@
 (def taiko-debug-opts #js {:headless true :observe false}) 
 
 (deftest app-works
-  (let [test-string "sample-app is running!"]
+  (let [test-string "cljs-app is running!"]
     (async done
            (-> (openBrowser)
              (then #(goto "http://localhost:5000"))
