@@ -1,8 +1,11 @@
 {
   "name": "create-cljs-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Set up a modern cljs app by running one command.",
   "main": "index.js",
+  "bin": {
+    "create-cljs-app": "./bin/create-cljs-app.js"
+  },
   "scripts": {
     "start": "shadow-cljs watch lib",
     "build": "yarn clean && shadow-cljs release lib",
