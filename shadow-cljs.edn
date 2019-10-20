@@ -1,24 +1,13 @@
-{:source-paths ["src"
-                "e2e"]
-
- :dependencies [[reagent "0.8.1"]
-                [funcool/promesa "4.0.2"]]
-
- :nrepl        {:port 3333}
-
- :builds       {:app {:target     :browser
-                      :output-dir "public/js"
-                      :asset-path "/js"
-                      :modules    {:main {:init-fn app.core/main}}
-                      :devtools   {:http-root   "public"
-                                   :http-port   3000}}
-                
-                :test {:target    :node-test
-                       :output-to "out/test.js"
-                       :ns-regexp "app.*-spec$"
-                       :autorun   true}
-
-                :e2e {:target    :node-test
-                      :output-to "out/e2e.js"
-                      :ns-regexp "e2e.*"
-                      :autorun   true}}}
+{:builds
+   {:e2e
+      {:autorun true,
+       :ns-regexp "e2e.*",
+       :output-to "out/e2e.js",
+       :target :node-test},
+    :lib
+      {:exports-var create-cljs-app.lib/exports,
+       :output-to "dist/lib.js",
+       :target :node-library}},
+ :dependencies [],
+ :nrepl {:port 3333},
+ :source-paths ["src"]}

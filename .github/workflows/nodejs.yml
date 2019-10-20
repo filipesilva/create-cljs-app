@@ -16,13 +16,7 @@ jobs:
         node-version: '12.x'
     - name: Install
       run: yarn
-    - name: Lint
-      # Linting isn't supported on Windows because clj-kondo doesn't work there.
-      if: matrix.os != 'windows-latest'
-      run: yarn lint
     - name: Build
       run: yarn build
-    - name: Test
-      run: yarn test:once
     - name: E2E
       run: yarn e2e

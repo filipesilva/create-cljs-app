@@ -1,0 +1,30 @@
+{
+  "name": "__NAME__",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "shadow-cljs watch app",
+    "build": "yarn clean && shadow-cljs release app",
+    "test": "shadow-cljs watch test",
+    "test:once": "shadow-cljs compile test",
+    "lint": "clj-kondo --lint src",
+    "format": "zprint-clj -i \"./src/**/*.{clj,cljs,cljc,edn}\" -o ./ && zprint-clj -i \"./*.edn\" -o ./",
+    "e2e": "shadow-cljs compile e2e",
+    "clean": "rimraf public/js"
+  },
+  "devDependencies": {
+    "rimraf": "~3.0.0",
+    "serve-handler": "~6.1.2",
+    "shadow-cljs": "~2.8.64",
+    "taiko": "~1.0.2",
+    "zprint-clj": "^0.5.0"
+  },
+  "dependencies": {
+    "create-react-class": "~15.6.3",
+    "react": "~16.10.2",
+    "react-dom": "~16.10.2"
+  },
+  "optionalDependencies": {
+    "clj-kondo": "^2019.10.11-alpha"
+  }
+}

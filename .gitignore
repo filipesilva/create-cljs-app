@@ -1,8 +1,6 @@
 node_modules
-public/js
+dist
 out
+test*
 .shadow-cljs
 .nrepl-port
-yarn.lock
-package-lock.json
-clj-kondo*.jar

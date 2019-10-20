@@ -1,30 +1,63 @@
 (ns e2e.core
-  (:require [cljs.test :refer-macros [deftest is async use-fixtures]]
-            [promesa.core :refer [then finally]]
-            ["http" :as http]
-            ["serve-handler" :as serve-handler]
-            ["taiko" :refer [openBrowser goto closeBrowser text]]))
+  (:require
+    [clojure.string :refer [includes?]]
+    [cljs.test :refer-macros [deftest are is use-fixtures testing]]
+    ["fs" :refer [existsSync readFileSync]]
+    ["os" :refer [platform]]
+    ["shelljs" :refer [exec rm]]))
 
-; Server public/ on a static server.
-(use-fixtures :once
-  (let [server (.createServer
-                http
-                #(serve-handler %1 %2 #js {:public "public/"}))]
-    {:before #(.listen server 5000)
-     :after  #(.close server)}))
+(defn silent-exec
+  [cmd]
+  "Run a command silently. Flip silent to false to see output."
+  (exec cmd #js {:silent true}))
 
-; Change debug to true to see the browser performing actions.
-(def debug false)
-(def browser-opts (if debug
-                    #js {:headless false :observe true}
-                    #js {}))
+; Clean existing test app, if any.
+(use-fixtures :once {:before #(rm "-rf" "test-app")})
 
-(deftest app-works
-  (let [test-string "cljs-app is running!"]
-    (async done
-           (-> (openBrowser browser-opts)
-               (then #(goto "http://localhost:5000"))
-               (then #(.exists (text test-string)))
-               (then #(is % (str "Text '" test-string "' should exist in page")))
-               (finally #(closeBrowser))
-               (then #(done))))))
+(defn fileIncludes
+  "Returns true if file includes a string match."
+  [path match]
+  (includes? (readFileSync path "utf-8") match))
+
+(deftest lib-works
+  (testing
+    "Creates project"
+    (let [create-result (silent-exec "node bin/create-cljs-app.js test-app")
+          output (.-stdout create-result)]
+      (is (= (.-code create-result) 0) "Should exit create command with code 0")
+      (testing
+        "Logs messages"
+        (is (includes? output "Creating a new CLJS app"))
+        (is (includes? output "Installing packages"))
+        (is (includes? output "Initialized a git repository"))
+        (is (includes? output "Success!")))
+      (is (existsSync "./test-app") "Should create test-app folder")
+      (.chdir js/process "test-app")
+      (testing
+        "Did not copy ignored template files"
+        (is (not (existsSync "./.shadow-cljs")))
+        (is (not (existsSync "./out")))
+        (is (not (existsSync "./public/js"))))
+      (testing
+        "Used template values"
+        (is (not (fileIncludes "./package.json" "__NAME__")))
+        (is (not (fileIncludes "./public/index.html" "__NAME__")))
+        (is (not (fileIncludes "./src/app/core.cljs" "__NAME__")))
+        (is (not (fileIncludes "./README.md" "__START__")))
+        (is (not (fileIncludes "./README.md" "__TEST__")))
+        (is (not (fileIncludes "./README.md" "__TEST:ONCE__")))
+        (is (not (fileIncludes "./README.md" "__E2E__")))
+        (is (not (fileIncludes "./README.md" "__BUILD__")))
+        (is (not (fileIncludes "./README.md" "__LINT__")))
+        (is (not (fileIncludes "./README.md" "__FORMAT__"))))
+      (testing
+        "Commands"
+        (is (= (.-code (silent-exec "yarn test:once")) 0) "Should test")
+        (is (= (.-code (silent-exec "yarn build")) 0) "Should build")
+        (is (existsSync "./public/js/main.js"))
+        "Should output public/js/main.js")
+      (is (= (.-code (silent-exec "yarn e2e")) 0) "Should e2e")
+      (when (not (= (platform) "win32"))
+        ; Linting doesn't work on Windows yet.
+        (is (= (.-code (silent-exec "yarn lint")) 0) "Should lint"))
+      (is (= (.-code (silent-exec "yarn format")) 0) "Should format"))))

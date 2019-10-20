@@ -1,0 +1,8 @@
+node_modules
+public/js
+out
+.shadow-cljs
+.nrepl-port
+yarn.lock
+package-lock.json
+clj-kondo*.jar
