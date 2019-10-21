@@ -1,7 +1,6 @@
 (ns e2e.core
   (:require
     [cljs.test :refer-macros [deftest is async use-fixtures]]
-    [promesa.core :refer [then finally]]
     ["http" :as http]
     ["serve-handler" :as serve-handler]
     ["taiko" :refer [openBrowser goto closeBrowser text]]))
@@ -23,8 +22,9 @@
       done
       (->
         (openBrowser browser-opts)
-        (then #(goto "http://localhost:5000"))
-        (then #(.exists (text test-string)))
-        (then #(is % (str "Text '" test-string "' should exist in page")))
-        (finally #(closeBrowser))
-        (then #(done))))))
+        (.then #(goto "http://localhost:5000"))
+        (.then #(.exists (text test-string)))
+        (.then #(is % (str "Text '" test-string "' should exist in page")))
+        (.catch #(is false "Should not have thrown errors"))
+        (.finally #(closeBrowser))
+        (.then #(done))))))

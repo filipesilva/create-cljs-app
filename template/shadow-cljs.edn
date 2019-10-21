@@ -15,6 +15,6 @@
        :ns-regexp "app.*-spec$",
        :output-to "out/test.js",
        :target :node-test}},
- :dependencies [[reagent "0.8.1"] [funcool/promesa "4.0.2"]],
+ :dependencies [[reagent "0.8.1"]],
  :nrepl {:port 3333},
  :source-paths ["src" "e2e"]}
