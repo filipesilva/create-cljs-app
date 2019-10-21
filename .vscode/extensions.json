@@ -1,0 +1,7 @@
+{
+	// List of extensions which should be recommended for VSCode users of this workspace.
+	"recommendations": [
+    "betterthantomorrow.calva",
+		"marcomorain.clojure-lint"
+	]
+}
