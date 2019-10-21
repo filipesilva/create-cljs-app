@@ -13,7 +13,8 @@
     "quick-e2e": "shadow-cljs compile lib && shadow-cljs compile e2e",
     "lint": "clj-kondo --lint src",
     "format": "zprint-clj -i \"./src/**/*.{clj,cljs,cljc,edn}\" -o ./ && zprint-clj -i \"./*.edn\" -o ./",
-    "clean": "shx rm -rf dist/"
+    "clean": "shx rm -rf dist/",
+    "prepublishOnly": "yarn build && yarn e2e"
   },
   "repository": {
     "type": "git",
