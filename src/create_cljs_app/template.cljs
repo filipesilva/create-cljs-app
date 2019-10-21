@@ -73,7 +73,7 @@ Will likely need to be replaced with a proper templating library."
 (defn copy-files
   "Copy files from one directory to another, preserving folder structure."
   [files from to get-template-values-map]
-  (doall (map #(copy-file from to % (get get-template-values-map path)) files)))
+  (doall (map #(copy-file from to % (get get-template-values-map %)) files)))
 
 (defn use-template
   "Create an app from a template into."
