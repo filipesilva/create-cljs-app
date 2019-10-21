@@ -29,7 +29,8 @@
         (is (includes? output "Creating a new CLJS app"))
         (is (includes? output "Installing packages"))
         (is (includes? output "Initialized a git repository"))
-        (is (includes? output "Success!")))
+        (is (includes? output "Success!"))
+        (is (not (includes? output "Java is needed to build."))))
       (is (existsSync "./test-app") "Should create test-app folder")
       (.chdir js/process "test-app")
       (testing

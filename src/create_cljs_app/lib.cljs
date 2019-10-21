@@ -2,9 +2,9 @@
   (:require
     [create-cljs-app.template :refer [use-template]]
     [create-cljs-app.utils :refer
-     [exit-with-reason get-commands should-use-git? should-use-yarn?]]
+     [exit-with-reason get-commands has-java? should-use-git? should-use-yarn?]]
     [create-cljs-app.messages :refer
-     [begin-msg done-msg init-git-msg install-packages-msg]]
+     [begin-msg done-msg init-git-msg install-packages-msg java-warning]]
     ["path" :refer [basename join]]
     ["fs" :refer [existsSync]]
     ["shelljs" :refer [exec rm]]))
@@ -40,6 +40,7 @@
                 (init-git-msg)
                 ; Catch and remove the .git directory to not leave it half-done.
                 (catch js/Object _e (rm "-rf" ".git")))))
+          (when (not (has-java?)) (java-warning))
           (done-msg name path abs-path commands)))))
 
 (def exports #js {:create create})

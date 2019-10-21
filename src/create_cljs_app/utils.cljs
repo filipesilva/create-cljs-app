@@ -27,6 +27,10 @@
      :lint "npm run lint",
      :format "npm run format"}))
 
-(defn should-use-yarn? [] (= (.-code (which "yarn")) 0))
+(defn has-binary-on-PATH? [name] (= (.-code (which name)) 0))
 
-(defn should-use-git? [] (= (.-code (which "git")) 0))
+(defn should-use-yarn? [] (has-binary-on-PATH? "yarn"))
+
+(defn should-use-git? [] (has-binary-on-PATH? "git"))
+
+(defn has-java? [] (has-binary-on-PATH? "java"))

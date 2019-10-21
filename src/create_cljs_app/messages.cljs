@@ -1,6 +1,6 @@
 (ns create-cljs-app.messages
   (:require
-    ["chalk" :refer [blue green]]))
+    ["chalk" :refer [blue green yellow]]))
 
 (defn begin-msg
   [abs-path]
@@ -52,3 +52,12 @@ We suggest that you begin by typing:
 
 Happy hacking!
 ")))
+
+(defn java-warning
+  []
+  (.log
+    js/console
+    (yellow
+      (str
+        "\nWARNING: Java is needed to build."
+        " Download the HotSpot 8+ version from https://adoptopenjdk.net."))))
