@@ -25,8 +25,7 @@ See the ClojureScript [testing page](https://clojurescript.org/tools/testing) fo
 
 ### `__LINT__` and `__FORMAT__`
 
-`__LINT__` checks the code for known bad code patterns using [clj-kondo](https://github.com/borkdude/clj-kondo).<br>
-Note: does not work on Windows currently, see this [issue](https://github.com/filipesilva/create-cljs-app/issues/2) for a workaround.
+`__LINT__` checks the code for known bad code patterns using [clj-kondo](https://github.com/borkdude/clj-kondo).
 
 `__FORMAT__` will format your code in a consistent manner using [zprint-clj](https://github.com/clj-commons/zprint-clj).
 

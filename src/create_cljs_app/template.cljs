@@ -1,6 +1,5 @@
 (ns create-cljs-app.template
   (:require
-    [create-cljs-app.utils :refer [get-commands]]
     [clojure.string :refer [replace]]
     ["path" :refer [dirname join]]
     ["fs" :refer
@@ -14,7 +13,7 @@
   "UNIX-style paths from the template dir to ignore. Mostly leftovers from template development."
   #{".shadow-cljs" "node_modules" "out" "yarn.lock" "public/js"})
 
-(defn get-template-values
+(defn get-template-values-map
   "List of string replacements to perform in files while copying.
 Will likely need to be replaced with a proper templating library."
   [name commands]
@@ -30,48 +29,51 @@ Will likely need to be replaced with a proper templating library."
       {:from "__FORMAT__", :to (:format commands)}
       {:from "__BUILD__", :to (:build commands)}]})
 
+(defn- join-partial
+  [partial fragment]
+  (if (= partial "")
+    fragment
+    ; Always join partials with UNIX separators to ensure matches with
+    ; ignores.
+    (str partial "/" fragment)))
+
+(defn- list-files-helper
+  [from ignore partial]
+  (mapcat
+    #(let [curr-partial (join-partial partial %)]
+       (if (.isFile (statSync (join from curr-partial)))
+         [curr-partial]
+         (list-files-helper from ignore curr-partial)))
+    (filter #(not (contains? ignore (join-partial partial %)))
+      (set (readdirSync (join from partial))))))
+
 (defn list-files
   "Recursively lists all files in a directory, ignoring some paths along the way."
   [from ignore]
-  (defn join-partial
-    [partial fragment]
-    (if (= partial "")
-      fragment
-      ; Always join partials with UNIX separators to ensure matches with
-      ; ignores.
-      (str partial "/" fragment)))
-  (defn list-files-helper
-    [partial]
-    (mapcat
-      #(let [curr-partial (join-partial partial %)]
-         (if (.isFile (statSync (join from curr-partial)))
-           [curr-partial]
-           (list-files-helper curr-partial)))
-      (filter #(not (contains? ignore (join-partial partial %)))
-        (set (readdirSync (join from partial))))))
-  (list-files-helper ""))
+  (list-files-helper from ignore ""))
 
 (defn copy-template
   "Copy a file while using it as a template with replacements."
-  [from-abs to-abs values]
+  [from-abs to-abs template-values]
   (writeFileSync
     to-abs
     (reduce #(replace %1 (:from %2) (:to %2))
       (readFileSync from-abs "utf-8")
-      values)))
+      template-values)))
+
+(defn- copy-file
+  [from to path template-values]
+  (let [from-abs (join from path)
+        to-abs (join to path)]
+    (mkdirSync (dirname to-abs) #js {:recursive true})
+    (if template-values
+      (copy-template from-abs to-abs template-values)
+      (copyFileSync from-abs to-abs))))
 
 (defn copy-files
   "Copy files from one directory to another, preserving folder structure."
-  [files from to template-values]
-  (defn copy-file
-    [path]
-    (let [from-abs (join from path)
-          to-abs (join to path)]
-      (mkdirSync (dirname to-abs) #js {:recursive true})
-      (if (contains? template-values path)
-        (copy-template from-abs to-abs (get template-values path))
-        (copyFileSync from-abs to-abs))))
-  (doall (map #(copy-file %) files)))
+  [files from to get-template-values-map]
+  (doall (map #(copy-file from to % (get get-template-values-map path)) files)))
 
 (defn use-template
   "Create an app from a template into."
@@ -80,4 +82,4 @@ Will likely need to be replaced with a proper templating library."
     (list-files template-dir template-ignores)
     template-dir
     app-path
-    (get-template-values name commands)))
+    (get-template-values-map name commands)))

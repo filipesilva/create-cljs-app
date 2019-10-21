@@ -39,7 +39,7 @@
                   exec-options)
                 (init-git-msg)
                 ; Catch and remove the .git directory to not leave it half-done.
-                (catch js/Object e (rm "-rf" ".git")))))
+                (catch js/Object _e (rm "-rf" ".git")))))
           (done-msg name path abs-path commands)))))
 
 (def exports #js {:create create})

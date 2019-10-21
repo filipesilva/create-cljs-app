@@ -103,8 +103,7 @@ See the ClojureScript [testing page](https://clojurescript.org/tools/testing) fo
 
 ### `npm run lint` or `yarn lint`, and `npm run format` or `yarn format`
 
-`lint` checks the code for known bad code patterns using [clj-kondo](https://github.com/borkdude/clj-kondo).<br>
-Note: does not work on Windows currently, see this [issue](https://github.com/filipesilva/create-cljs-app/issues/2) for a workaround.
+`lint` checks the code for known bad code patterns using [clj-kondo](https://github.com/borkdude/clj-kondo).
 
 `format` will format your code in a consistent manner using [zprint-clj](https://github.com/clj-commons/zprint-clj).
 

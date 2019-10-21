@@ -16,6 +16,8 @@ jobs:
         node-version: '12.x'
     - name: Install
       run: yarn
+    - name: Lint
+      run: yarn lint
     - name: Build
       run: yarn build
     - name: E2E

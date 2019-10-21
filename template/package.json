@@ -13,6 +13,7 @@
     "clean": "rimraf public/js"
   },
   "devDependencies": {
+    "clj-kondo": "2019.10.11-alpha.1",
     "rimraf": "~3.0.0",
     "serve-handler": "~6.1.2",
     "shadow-cljs": "~2.8.64",
@@ -23,8 +24,5 @@
     "create-react-class": "~15.6.3",
     "react": "~16.10.2",
     "react-dom": "~16.10.2"
-  },
-  "optionalDependencies": {
-    "clj-kondo": "^2019.10.11-alpha"
   }
 }

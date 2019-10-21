@@ -1,14 +1,13 @@
 (ns e2e.core
   (:require
     [clojure.string :refer [includes?]]
-    [cljs.test :refer-macros [deftest are is use-fixtures testing]]
+    [cljs.test :refer-macros [deftest is use-fixtures testing]]
     ["fs" :refer [existsSync readFileSync]]
-    ["os" :refer [platform]]
     ["shelljs" :refer [exec rm]]))
 
 (defn silent-exec
-  [cmd]
   "Run a command silently. Flip silent to false to see output."
+  [cmd]
   (exec cmd #js {:silent true}))
 
 ; Clean existing test app, if any.
@@ -57,7 +56,5 @@
         (is (existsSync "./public/js/main.js"))
         "Should output public/js/main.js")
       (is (= (.-code (silent-exec "yarn e2e")) 0) "Should e2e")
-      (when (not (= (platform) "win32"))
-        ; Linting doesn't work on Windows yet.
-        (is (= (.-code (silent-exec "yarn lint")) 0) "Should lint"))
+      (is (= (.-code (silent-exec "yarn lint")) 0) "Should lint")
       (is (= (.-code (silent-exec "yarn format")) 0) "Should format"))))

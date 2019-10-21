@@ -1,7 +1,6 @@
 (ns create-cljs-app.messages
   (:require
-    ["chalk" :refer [blue green]]
-    ["path" :refer [dirname]]))
+    ["chalk" :refer [blue green]]))
 
 (defn begin-msg
   [abs-path]
