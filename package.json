@@ -1,6 +1,6 @@
 {
   "name": "create-cljs-app",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Set up a modern cljs app by running one command.",
   "main": "index.js",
   "bin": {
