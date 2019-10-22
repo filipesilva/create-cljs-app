@@ -7,7 +7,12 @@
     :lib
       {:exports-var create-cljs-app.lib/exports,
        :output-to "dist/lib.js",
-       :target :node-library}},
+       :target :node-library},
+    :test
+      {:autorun true,
+       :ns-regexp "create-cljs-ap.*-spec$",
+       :output-to "out/test.js",
+       :target :node-test}},
  :dependencies [],
  :nrepl {:port 3333},
  :source-paths ["src"]}

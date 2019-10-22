@@ -27,7 +27,7 @@
      :lint "npm run lint",
      :format "npm run format"}))
 
-(defn has-binary-on-PATH? [name] (= (.-code (which name)) 0))
+(defn has-binary-on-PATH? [name] (boolean (which name)))
 
 (defn should-use-yarn? [] (has-binary-on-PATH? "yarn"))
 
