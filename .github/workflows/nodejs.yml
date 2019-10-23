@@ -35,9 +35,15 @@ jobs:
       with:
         node-version: '12.x'
     - name: Install
-      run: yarn    
+      run: yarn
+    - name: Build
+      run: yarn build      
     - name: Semantic Release
       uses: cycjimmy/semantic-release-action@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}      
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Wait for release to propagate
+      run: sleep 10
+    - name: Try to use release
+      run: yarn create cljs-app my-cljs-app
