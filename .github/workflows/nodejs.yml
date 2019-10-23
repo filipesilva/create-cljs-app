@@ -43,6 +43,15 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  
+  test-release:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
     - name: Wait for release to propagate
       run: sleep 10
     - name: Try to use release
