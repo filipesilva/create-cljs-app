@@ -1,6 +1,6 @@
 {
   "name": "create-cljs-app",
-  "version": "0.1.7",
+  "version": "0.0.0-development",
   "description": "Set up a modern cljs app by running one command.",
   "main": "index.js",
   "bin": {
@@ -16,11 +16,11 @@
     "lint": "clj-kondo --lint src",
     "format": "zprint-clj -i \"./src/**/*.{clj,cljs,cljc,edn}\" -o ./ && zprint-clj -i \"./*.edn\" -o ./",
     "clean": "shx rm -rf dist/",
-    "prepublishOnly": "yarn build && yarn e2e"
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/filipesilva/create-cljs-app.git"
+    "url": "https://github.com/filipesilva/create-cljs-app.git"
   },
   "keywords": [
     "clojure",
@@ -38,7 +38,8 @@
     "clj-kondo": "2019.10.11-alpha.1",
     "shadow-cljs": "^2.8.64",
     "shx": "^0.3.2",
-    "zprint-clj": "^0.5.0"
+    "zprint-clj": "^0.5.0",
+    "semantic-release": "^15.13.27"
   },
   "dependencies": {
     "chalk": "^2.4.2",
