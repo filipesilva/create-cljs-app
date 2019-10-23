@@ -26,6 +26,7 @@ jobs:
       run: yarn e2e
 
   release:
+    if: github.ref == 'master' && github.repository == 'filipesilva/create-cljs-app'
     needs: test
     runs-on: ubuntu-latest
     steps:
