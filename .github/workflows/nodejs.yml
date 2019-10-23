@@ -24,6 +24,9 @@ jobs:
       run: yarn test:once
     - name: E2E
       run: yarn e2e
+
+  release:
+    needs: test
     - name: Semantic Release
       uses: cycjimmy/semantic-release-action@v2
       env:
