@@ -27,6 +27,8 @@ jobs:
     - name: E2E
       run: yarn e2e
     - name: Archive Production Artifact
+	    # Only upload the Linux build.
+      if: matrix.os == 'ubuntu-latest'    
       uses: actions/upload-artifact@master
       with:
         name: dist
