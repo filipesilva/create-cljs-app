@@ -18,6 +18,8 @@ jobs:
       run: yarn
     - name: Lint
       run: yarn lint
+    - name: Start background server
+      run: yarn shadow-cljs start
     - name: Build
       run: yarn build
     - name: Test
