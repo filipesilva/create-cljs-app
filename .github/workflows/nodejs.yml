@@ -32,7 +32,7 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: dist
-        path: dist      
+        path: dist
 
   release:
     if: github.ref == 'refs/heads/master' && github.repository == 'filipesilva/create-cljs-app'
@@ -46,19 +46,17 @@ jobs:
         name: dist  
     - name: Semantic Release
       uses: cycjimmy/semantic-release-action@v2
+      id: semantic
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  
-  test-release:
-    needs: release
-    runs-on: ubuntu-latest
-    steps:
+    # Test the release if one was made.
+    # Would be nice to group these steps on the `if` conditional, but no way to do it yet.
     - name: Use Node.js 12.x
+      if: steps.semantic.outputs.new_release_published == 'true'
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - name: Wait for release to propagate
-      run: sleep 10
     - name: Try to use release
+      if: steps.semantic.outputs.new_release_published == 'true'
       run: yarn create cljs-app my-cljs-app
