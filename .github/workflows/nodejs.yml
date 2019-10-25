@@ -61,4 +61,4 @@ jobs:
       if: steps.semantic.outputs.new_release_published == 'true'
       # This step fails due to https://github.com/cycjimmy/semantic-release-action/issues/2
       # Still trying to find a workaround, hence the cat command.
-      run: cat ~/.npmrc && yarn create cljs-app my-cljs-app
+      run: npm config ls -l && yarn create cljs-app my-cljs-app
