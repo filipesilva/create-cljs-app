@@ -1,7 +1,6 @@
 {:builds
    {:e2e
-      {:autorun true,
-       :ns-regexp "e2e.*",
+      {:ns-regexp "e2e.*",
        :output-to "out/e2e.js",
        :target :node-test},
     :lib
@@ -9,8 +8,7 @@
        :output-to "dist/lib.js",
        :target :node-library},
     :test
-      {:autorun true,
-       :ns-regexp "create-cljs-ap.*-spec$",
+      {:ns-regexp "create-cljs-ap.*-spec$",
        :output-to "out/test.js",
        :target :node-test}},
  :dependencies [],

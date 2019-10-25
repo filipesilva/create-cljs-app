@@ -6,13 +6,11 @@
        :output-dir "public/js",
        :target :browser},
     :e2e
-      {:autorun true,
-       :ns-regexp "e2e.*",
+      {:ns-regexp "e2e.*",
        :output-to "out/e2e.js",
        :target :node-test},
     :test
-      {:autorun true,
-       :ns-regexp "app.*-spec$",
+      {:ns-regexp "app.*-spec$",
        :output-to "out/test.js",
        :target :node-test}},
  :dependencies [[reagent "0.8.1"]],
