@@ -38,6 +38,8 @@ Your app is ready to be deployed!
 
 ## Useful resources
 
+CLJS FAQ (for JavaScript developers) https://clojurescript.org/guides/faq-js.
+
 Official CLJS API https://cljs.github.io/api/.
 
 Quick reference https://cljs.info/cheatsheet/.
