@@ -59,6 +59,4 @@ jobs:
         node-version: '12.x'
     - name: Try to use release
       if: steps.semantic.outputs.new_release_published == 'true'
-      # This step fails due to https://github.com/cycjimmy/semantic-release-action/issues/2
-      # Still trying to find a workaround, hence the cat command.
-      run: npm config ls -l && yarn create cljs-app my-cljs-app
+      run: yarn create cljs-app my-cljs-app
