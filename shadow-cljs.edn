@@ -1,8 +1,5 @@
 {:builds
-   {:e2e
-      {:ns-regexp "e2e.*",
-       :output-to "out/e2e.js",
-       :target :node-test},
+   {:e2e {:ns-regexp "e2e.*", :output-to "out/e2e.js", :target :node-test},
     :lib
       {:exports-var create-cljs-app.lib/exports,
        :output-to "dist/lib.js",

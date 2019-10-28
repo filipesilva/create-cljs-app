@@ -1,6 +1,7 @@
 (ns create-cljs-app.utils
   (:require
     ["chalk" :refer [red]]
+    ["semver" :refer [coerce satisfies]]
     ["shelljs" :refer [which]]))
 
 (defn exit-with-reason
@@ -34,3 +35,5 @@
 (defn should-use-git? [] (has-binary-on-PATH? "git"))
 
 (defn has-java? [] (has-binary-on-PATH? "java"))
+
+(defn is-supported-node? [version] (satisfies (coerce version) ">=10.12.0"))

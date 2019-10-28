@@ -1,6 +1,6 @@
 (ns create-cljs-app.messages
   (:require
-    ["chalk" :refer [blue green yellow]]))
+    ["chalk" :refer [blue green red yellow]]))
 
 (defn begin-msg
   [abs-path]
@@ -61,3 +61,13 @@ Happy hacking!
       (str
         "\nWARNING: Java is needed to build."
         " Download the HotSpot 8+ version from https://adoptopenjdk.net."))))
+
+
+(defn node-error
+  []
+  (.error
+    js/console
+    (red
+      (str
+        "\nERROR: NodeJS >= 10.12 is needed to run create-cljs-app."
+        " Download a recent NodeJS version from https://nodejs.org/en/download/"))))

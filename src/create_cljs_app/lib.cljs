@@ -2,9 +2,11 @@
   (:require
     [create-cljs-app.template :refer [use-template]]
     [create-cljs-app.utils :refer
-     [exit-with-reason get-commands has-java? should-use-git? should-use-yarn?]]
+     [exit-with-reason get-commands has-java? should-use-git? should-use-yarn?
+      is-supported-node?]]
     [create-cljs-app.messages :refer
-     [begin-msg done-msg init-git-msg install-packages-msg java-warning]]
+     [begin-msg done-msg init-git-msg install-packages-msg java-warning
+      node-error]]
     ["path" :refer [basename join]]
     ["fs" :refer [existsSync]]
     ["shelljs" :refer [exec rm]]))
@@ -13,6 +15,10 @@
 (defn create
   "Create an app from the template files on the given path."
   [cwd path]
+  ; Bail early if the node version is unsupported.
+  (when (not (is-supported-node? (.-version js/process)))
+    (node-error)
+    (.exit js/process 1))
   (let [abs-path (join cwd path)
         name (basename abs-path)
         use-yarn (should-use-yarn?)
