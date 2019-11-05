@@ -16,7 +16,7 @@ jobs:
     # https://github.com/actions/cache/issues/39
     # Unclear if we can just use the same cached yarn/maven artifacts on both though.
     - name: Cache yarn on unix
-      if: matrix.operating-system != 'windows-latest'
+      if: matrix.os != 'windows-latest'
       uses: actions/cache@v1
       with:
         path: ~/.yarn-cache
@@ -25,14 +25,14 @@ jobs:
           unix-yarn-
     - name: Cache maven on unix
       uses: actions/cache@v1
-      if: matrix.operating-system != 'windows-latest'
+      if: matrix.os != 'windows-latest'
       with:
         path: ~/.m2
         key: unix-m2-${{ hashFiles('**/shadow-cljs.edn') }}
         restore-keys: |
           unix-m2-
     - name: Cache yarn on windows
-      if: matrix.operating-system == 'windows-latest'
+      if: matrix.os == 'windows-latest'
       uses: actions/cache@v1
       with:
         path: ~/.yarn-cache
@@ -41,7 +41,7 @@ jobs:
           windows-yarn-
     - name: Cache maven on windows
       uses: actions/cache@v1
-      if: matrix.operating-system == 'windows-latest'
+      if: matrix.os == 'windows-latest'
       with:
         path: ~/.m2
         key: windows-m2-${{ hashFiles('**\shadow-cljs.edn') }}
