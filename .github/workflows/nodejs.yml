@@ -15,14 +15,14 @@ jobs:
     # - / doesn't work on windows
     # https://github.com/actions/cache/issues/39
     # Unclear if we can just use the same cached yarn/maven artifacts on both though.
-    - name: Cache yarn on unix
+    - name: Cache node_modules on unix
       if: matrix.os != 'windows-latest'
       uses: actions/cache@v1
       with:
-        path: ~/.yarn-cache
-        key: unix-yarn-${{ hashFiles('**/yarn.lock') }}
+        path: node_modules
+        key: unix-node_modules-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
-          unix-yarn-
+          unix-node_modules-
     - name: Cache maven on unix
       uses: actions/cache@v1
       if: matrix.os != 'windows-latest'
@@ -31,14 +31,14 @@ jobs:
         key: unix-m2-${{ hashFiles('**/shadow-cljs.edn') }}
         restore-keys: |
           unix-m2-
-    - name: Cache yarn on windows
+    - name: Cache node_modules on windows
       if: matrix.os == 'windows-latest'
       uses: actions/cache@v1
       with:
-        path: ~/.yarn-cache
-        key: windows-yarn-${{ hashFiles('**\yarn.lock') }}
+        path: node_modules
+        key: windows-node_modules-${{ hashFiles('**\yarn.lock') }}
         restore-keys: |
-          windows-yarn-
+          windows-node_modules-
     - name: Cache maven on windows
       uses: actions/cache@v1
       if: matrix.os == 'windows-latest'
