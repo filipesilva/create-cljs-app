@@ -14,14 +14,14 @@ jobs:
       uses: actions/cache@v1
       with:
         path: ~/.yarn-cache
-        key: yarn-${{ hashFiles('**/yarn.lock') }}
+        key: yarn-${{ hashFiles('**[\/]yarn.lock') }}
         restore-keys: |
           yarn-
     - name: Cache maven
       uses: actions/cache@v1
       with:
         path: ~/.m2
-        key: m2-${{ hashFiles('**/shadow-cljs.edn') }}
+        key: m2-${{ hashFiles('**[\/]shadow-cljs.edn') }}
         restore-keys: |
           m2-
     - name: Use Node.js 12.x
