@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "sc": "shadow-cljs",
     "start": "shadow-cljs watch app",
     "build": "yarn clean && shadow-cljs release app",
     "test": "shadow-cljs watch test --config-merge \"{:autorun true}\"",

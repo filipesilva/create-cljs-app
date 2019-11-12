@@ -33,7 +33,7 @@ jobs:
     - name: Lint
       run: yarn lint
     - name: Start background server
-      run: yarn shadow-cljs start
+      run: yarn sc start
     - name: Build
       run: yarn build
     - name: Test

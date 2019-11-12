@@ -52,6 +52,7 @@
         (is (not (fileIncludes "./README.md" "__FORMAT__"))))
       (testing
         "Commands"
+        (is (= (.-code (silent-exec "yarn sc start")) 0) "Should start background server")
         (is (= (.-code (silent-exec "yarn test:once")) 0) "Should test")
         (is (= (.-code (silent-exec "yarn build")) 0) "Should build")
         (is (existsSync "./public/js/main.js"))
