@@ -10,43 +10,20 @@ jobs:
         os: [ubuntu-latest, macOS-latest, windows-latest]
     steps:
     - uses: actions/checkout@v1
-    # hashFiles has two bugs atm:
-    # - can't do individual files
-    # - / doesn't work on windows
-    # https://github.com/actions/cache/issues/39
-    # Unclear if we can just use the same cached yarn/maven artifacts on both though.
-    - name: Cache node_modules on unix
-      if: matrix.os != 'windows-latest'
+    - name: Cache node_modules
       uses: actions/cache@v1
       with:
         path: node_modules
-        key: unix-node_modules-${{ hashFiles('**/yarn.lock') }}
+        key: node_modules-${{ hashFiles('yarn.lock') }}
         restore-keys: |
-          unix-node_modules-
-    - name: Cache maven on unix
+          node_modules-
+    - name: Cache maven
       uses: actions/cache@v1
-      if: matrix.os != 'windows-latest'
       with:
         path: ~/.m2
-        key: unix-m2-${{ hashFiles('**/shadow-cljs.edn') }}
+        key: m2-${{ hashFiles('shadow-cljs.edn') }}
         restore-keys: |
-          unix-m2-
-    - name: Cache node_modules on windows
-      if: matrix.os == 'windows-latest'
-      uses: actions/cache@v1
-      with:
-        path: node_modules
-        key: windows-node_modules-${{ hashFiles('**\yarn.lock') }}
-        restore-keys: |
-          windows-node_modules-
-    - name: Cache maven on windows
-      uses: actions/cache@v1
-      if: matrix.os == 'windows-latest'
-      with:
-        path: ~/.m2
-        key: windows-m2-${{ hashFiles('**\shadow-cljs.edn') }}
-        restore-keys: |
-          windows-m2-
+          m2-
     - name: Use Node.js 12.x
       uses: actions/setup-node@v1
       with:
