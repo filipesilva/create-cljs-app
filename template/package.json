@@ -24,6 +24,6 @@
   "dependencies": {
     "create-react-class": "~15.6.3",
     "react": "~16.11.0",
-    "react-dom": "~16.11.0"
+    "react-dom": "~16.12.0"
   }
 }
