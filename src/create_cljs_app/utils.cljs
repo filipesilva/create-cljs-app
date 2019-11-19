@@ -1,8 +1,7 @@
 (ns create-cljs-app.utils
-  (:require
-    ["chalk" :refer [red]]
-    ["semver" :refer [coerce satisfies]]
-    ["shelljs" :refer [which]]))
+  (:require ["chalk" :refer [red]]
+            ["semver" :refer [coerce satisfies]]
+            ["shelljs" :refer [which]]))
 
 (defn exit-with-reason
   "Show a message in red in the error stream, then exit with code 1."
@@ -13,19 +12,19 @@
 (defn get-commands
   [use-yarn]
   (if use-yarn
-    {:start "yarn start",
-     :build "yarn build",
-     :test "yarn test",
-     :test:once "yarn test:once",
-     :e2e "yarn e2e",
-     :lint "yarn lint",
+    {:start "yarn start"
+     :build "yarn build"
+     :test "yarn test"
+     :test:once "yarn test:once"
+     :e2e "yarn e2e"
+     :lint "yarn lint"
      :format "yarn format"}
-    {:start "npm start",
-     :build "npm run build",
-     :test "npm test",
-     :test:once "npm run test:once",
-     :e2e "npm run e2e",
-     :lint "npm run lint",
+    {:start "npm start"
+     :build "npm run build"
+     :test "npm test"
+     :test:once "npm run test:once"
+     :e2e "npm run e2e"
+     :lint "npm run lint"
      :format "npm run format"}))
 
 (defn has-binary-on-PATH? [name] (boolean (which name)))
