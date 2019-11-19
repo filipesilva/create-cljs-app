@@ -10,7 +10,7 @@
     "test:once": "shadow-cljs compile test && node out/test.js",
     "e2e": "shadow-cljs compile e2e && node out/e2e.js",
     "lint": "clj-kondo --lint src",
-    "format": "zprint-clj -i \"./src/**/*.{clj,cljs,cljc,edn}\" -o ./ && zprint-clj -i \"./*.edn\" -o ./",
+    "format": "zprint-clj --hang -i \"./src/**/*.{clj,cljs,cljc,edn}\" -o ./ && zprint-clj -i \"./*.edn\" -o ./",
     "clean": "rimraf public/js"
   },
   "devDependencies": {
@@ -20,7 +20,7 @@
     "shadow-cljs": "~2.8.74",
     "taiko": "~1.0.2",
     "taiko-diagnostics": "~0.4.0",
-    "zprint-clj": "^0.5.0"
+    "zprint-clj": "~0.8.0"
   },
   "dependencies": {
     "create-react-class": "~15.6.3",

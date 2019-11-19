@@ -1,9 +1,8 @@
 (ns e2e.core
-  (:require
-    [clojure.string :refer [includes?]]
-    [cljs.test :refer-macros [deftest is use-fixtures testing]]
-    ["fs" :refer [existsSync readFileSync]]
-    ["shelljs" :refer [exec rm]]))
+  (:require [clojure.string :refer [includes?]]
+            [cljs.test :refer-macros [deftest is use-fixtures testing]]
+            ["fs" :refer [existsSync readFileSync]]
+            ["shelljs" :refer [exec rm]]))
 
 (defn silent-exec
   "Run a command silently. Flip silent to false to see output."
@@ -19,13 +18,11 @@
   (includes? (readFileSync path "utf-8") match))
 
 (deftest lib-works
-  (testing
-    "Creates project"
+  (testing "Creates project"
     (let [create-result (silent-exec "node bin/create-cljs-app.js test-app")
           output (.-stdout create-result)]
       (is (= (.-code create-result) 0) "Should exit create command with code 0")
-      (testing
-        "Logs messages"
+      (testing "Logs messages"
         (is (includes? output "Creating a new CLJS app"))
         (is (includes? output "Installing packages"))
         (is (includes? output "Initialized a git repository"))
@@ -33,13 +30,11 @@
         (is (not (includes? output "Java is needed to build."))))
       (is (existsSync "./test-app") "Should create test-app folder")
       (.chdir js/process "test-app")
-      (testing
-        "Did not copy ignored template files"
+      (testing "Did not copy ignored template files"
         (is (not (existsSync "./.shadow-cljs")))
         (is (not (existsSync "./out")))
         (is (not (existsSync "./public/js"))))
-      (testing
-        "Used template values"
+      (testing "Used template values"
         (is (not (fileIncludes "./package.json" "__NAME__")))
         (is (not (fileIncludes "./public/index.html" "__NAME__")))
         (is (not (fileIncludes "./src/app/core.cljs" "__NAME__")))
@@ -50,8 +45,7 @@
         (is (not (fileIncludes "./README.md" "__BUILD__")))
         (is (not (fileIncludes "./README.md" "__LINT__")))
         (is (not (fileIncludes "./README.md" "__FORMAT__"))))
-      (testing
-        "Commands"
+      (testing "Commands"
         (is (= (.-code (silent-exec "yarn sc start")) 0) "Should start background server")
         (is (= (.-code (silent-exec "yarn test:once")) 0) "Should test")
         (is (= (.-code (silent-exec "yarn build")) 0) "Should build")
