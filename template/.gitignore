@@ -4,3 +4,4 @@ out
 .shadow-cljs
 .nrepl-port
 .clj-kondo
+yarn-error.log
