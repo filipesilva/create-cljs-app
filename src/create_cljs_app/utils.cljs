@@ -13,6 +13,7 @@
   [use-yarn]
   (if use-yarn
     {:start "yarn start"
+     :server "yarn server"
      :build "yarn build"
      :test "yarn test"
      :test:once "yarn test:once"
@@ -20,6 +21,7 @@
      :lint "yarn lint"
      :format "yarn format"}
     {:start "npm start"
+     :server "npm run server"
      :build "npm run build"
      :test "npm test"
      :test:once "npm run test:once"

@@ -36,6 +36,11 @@ It correctly bundles all code and optimizes the build for the best performance.
 
 Your app is ready to be deployed!
 
+### `__SERVER__`
+
+Starts a Shadow CLJS background server.<br>
+This will speed up starting time for other commands that use Shadow CLJS.
+
 ## Useful resources
 
 Clojurians Slack http://clojurians.net/.
