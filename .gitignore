@@ -1,7 +1,7 @@
 node_modules
 dist
 out
-test*
+test*/
 .shadow-cljs
 .nrepl-port
 yarn-error.log

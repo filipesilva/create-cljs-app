@@ -13,18 +13,20 @@
   [use-yarn]
   (if use-yarn
     {:start "yarn start"
+     :cards "yarn cards"
      :server "yarn server"
      :build "yarn build"
      :test "yarn test"
-     :test:once "yarn test:once"
+     :test:watch "yarn test:watch"
      :e2e "yarn e2e"
      :lint "yarn lint"
      :format "yarn format"}
     {:start "npm start"
+     :cards "npm run cards"
      :server "npm run server"
      :build "npm run build"
      :test "npm test"
-     :test:once "npm run test:once"
+     :test:watch "npm run test:watch"
      :e2e "npm run e2e"
      :lint "npm run lint"
      :format "npm run format"}))
