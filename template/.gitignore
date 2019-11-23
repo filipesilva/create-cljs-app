@@ -5,3 +5,4 @@ out
 .nrepl-port
 .clj-kondo
 yarn-error.log
+report.html

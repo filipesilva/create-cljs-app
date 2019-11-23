@@ -23,6 +23,15 @@ You can use it to design, test, and think about parts of your app in isolation.
 
 This environment uses [Devcards](https://github.com/bhauman/devcards) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro).
 
+### `__BUILD__`
+
+Builds the app for production to the `public` folder.<br>
+It correctly bundles all code and optimizes the build for the best performance.
+
+Your app is ready to be deployed!
+
+## Other useful scripts
+
 ### `__TEST__` and `__E2E__`
 
 You can use `__TEST__` to run tests a single time, and `__E2E__` to run the end-to-end test app.
@@ -36,12 +45,10 @@ See the ClojureScript [testing page](https://clojurescript.org/tools/testing) fo
 
 `__FORMAT__` will format your code in a consistent manner using [zprint-clj](https://github.com/clj-commons/zprint-clj).
 
-### `__BUILD__`
+### `__REPORT__`
 
-Builds the app for production to the `public` folder.<br>
-It correctly bundles all code and optimizes the build for the best performance.
-
-Your app is ready to be deployed!
+Make a report of what files contribute to your app size.<br>
+Consider [code-splitting](https://code.thheller.com/blog/shadow-cljs/2019/03/03/code-splitting-clojurescript.html) or using smaller libraries to make your app load faster.
 
 ### `__SERVER__`
 
