@@ -20,6 +20,7 @@ Will likely need to be replaced with a proper templating library."
    "public/index.html" [{:from "__NAME__" :to name}]
    "src/app/core.cljs" [{:from "__NAME__" :to name}]
    "README.md" [{:from "__START__" :to (:start commands)}
+                {:from "__SERVER__" :to (:server commands)}
                 {:from "__TEST__" :to (:test commands)}
                 {:from "__TEST:ONCE__" :to (:test:once commands)}
                 {:from "__E2E__" :to (:e2e commands)}
@@ -68,8 +69,8 @@ Will likely need to be replaced with a proper templating library."
 
 (defn copy-files
   "Copy files from one directory to another, preserving folder structure."
-  [files from to get-template-values-map]
-  (doall (map #(copy-file from to % (get get-template-values-map %)) files)))
+  [files from to template-values-map]
+  (doall (map #(copy-file from to % (get template-values-map %)) files)))
 
 (defn use-template
   "Create an app from a template into."

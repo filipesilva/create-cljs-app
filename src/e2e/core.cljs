@@ -39,6 +39,7 @@
         (is (not (fileIncludes "./public/index.html" "__NAME__")))
         (is (not (fileIncludes "./src/app/core.cljs" "__NAME__")))
         (is (not (fileIncludes "./README.md" "__START__")))
+        (is (not (fileIncludes "./README.md" "__SERVER__")))
         (is (not (fileIncludes "./README.md" "__TEST__")))
         (is (not (fileIncludes "./README.md" "__TEST:ONCE__")))
         (is (not (fileIncludes "./README.md" "__E2E__")))

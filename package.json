@@ -11,6 +11,7 @@
   },
   "scripts": {
     "sc": "shadow-cljs",
+    "server": "shadow-cljs stop && shadow-cljs start",
     "start": "shadow-cljs watch lib",
     "build": "yarn clean && shadow-cljs release lib",
     "test": "shadow-cljs watch test --config-merge \"{:autorun true}\"",

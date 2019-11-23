@@ -112,6 +112,11 @@ See the ClojureScript [testing page](https://clojurescript.org/tools/testing) fo
 Builds the app for production to the `public` folder.<br>
 It correctly bundles all code and optimizes the build for the best performance.
 
+### `npm run server` or `yarn server`
+
+Starts a Shadow CLJS background server.<br>
+This will speed up starting time for other commands that use Shadow CLJS.
+
 ## License
 
 Create CLJS App is open source software [licensed as MIT](https://github.com/filipesilva/create-cljs-app/blob/master/LICENSE).
