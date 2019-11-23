@@ -6,7 +6,7 @@ In the project directory, you can run:
 
 ### `__START__`
 
-Runs the app in the development mode.<br>
+Runs the app in development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.
 
@@ -16,10 +16,17 @@ You can use existing npm React components directly via a [interop call](http://r
 Builds use [Shadow CLJS](https://github.com/thheller/shadow-cljs) for maximum compatibility with NPM libraries. You'll need a [Java SDK](https://adoptopenjdk.net/) (Version 8+, Hotspot) to use it. <br>
 You can [import npm libraries](https://shadow-cljs.github.io/docs/UsersGuide.html#js-deps) using Shadow CLJS. See the [user manual](https://shadow-cljs.github.io/docs/UsersGuide.html) for more information.
 
+### `__CARDS__`
+
+Runs the interactive live development enviroment.<br>
+You can use it to design, test, and think about parts of your app in isolation.
+
+This environment uses [Devcards](https://github.com/bhauman/devcards) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro).
+
 ### `__TEST__` and `__E2E__`
 
-`__TEST__` launches the test runner in the interactive watch mode.<br>
-You can use `__TEST:ONCE__` to run the tests a single time, and `__E2E__` to run end-to-end tests.
+You can use `__TEST__` to run tests a single time, and `__E2E__` to run the end-to-end test app.
+`__TEST:WATCH__` launches tests in interactive watch mode.<br>
 
 See the ClojureScript [testing page](https://clojurescript.org/tools/testing) for more information. E2E tests use [Taiko](https://github.com/getgauge/taiko) to interact with a headless browser.
 

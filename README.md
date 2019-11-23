@@ -67,13 +67,17 @@ my-app
 |  └── favicon.ico
 └── src
    ├── app
+   |  ├── cards
+   |  |  ├── devcards_runner.cljs
+   |  |  ├── helpers.cljs        
+   |  |  └── test_runner.cljs    
    |  ├── core.cljs
-   |  └── core_spec.cljs
+   |  ├── hello.cljs
+   |  └── hello_cards.cljs       
    └── e2e
-      └── core.cljs    
+      └── core.cljs
 ```
 
-No configuration or complicated folder structures, just the files you need to build your app.<br>
 Once the installation is done, you can open your project folder:
 
 ```sh
@@ -93,6 +97,13 @@ You can use existing npm React components directly via a [interop call](http://r
 
 Builds use [Shadow CLJS](https://github.com/thheller/shadow-cljs) for maximum compatibility with NPM libraries. You'll need a [Java SDK](https://adoptopenjdk.net/) (Version 8+, Hotspot) to use it. <br>
 You can [import npm libraries](https://shadow-cljs.github.io/docs/UsersGuide.html#js-deps) using Shadow CLJS. See the [user manual](https://shadow-cljs.github.io/docs/UsersGuide.html) for more information.
+
+### `npm run cards` or `yarn cards`
+
+Runs the interactive live development enviroment.<br>
+You can use it to design, test, and think about parts of your app in isolation.
+
+This environment uses [Devcards](https://github.com/bhauman/devcards) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro).
 
 ### `npm test` or `yarn test`, and `npm run e2e` or `yarn e2e`
 

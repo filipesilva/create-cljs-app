@@ -20,9 +20,10 @@ Will likely need to be replaced with a proper templating library."
    "public/index.html" [{:from "__NAME__" :to name}]
    "src/app/core.cljs" [{:from "__NAME__" :to name}]
    "README.md" [{:from "__START__" :to (:start commands)}
+                {:from "__CARDS__" :to (:cards commands)}
                 {:from "__SERVER__" :to (:server commands)}
-                {:from "__TEST__" :to (:test commands)}
-                {:from "__TEST:ONCE__" :to (:test:once commands)}
+                {:from "__TEST:WATCH__" :to (:test commands)}
+                {:from "__TEST__" :to (:test:once commands)}
                 {:from "__E2E__" :to (:e2e commands)}
                 {:from "__LINT__" :to (:lint commands)}
                 {:from "__FORMAT__" :to (:format commands)}
