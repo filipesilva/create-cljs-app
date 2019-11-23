@@ -26,6 +26,7 @@ Will likely need to be replaced with a proper templating library."
                 {:from "__TEST__" :to (:test:once commands)}
                 {:from "__E2E__" :to (:e2e commands)}
                 {:from "__LINT__" :to (:lint commands)}
+                {:from "__REPORT__" :to (:report commands)}
                 {:from "__FORMAT__" :to (:format commands)}
                 {:from "__BUILD__" :to (:build commands)}]})
 

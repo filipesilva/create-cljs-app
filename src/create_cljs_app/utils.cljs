@@ -20,6 +20,7 @@
      :test:watch "yarn test:watch"
      :e2e "yarn e2e"
      :lint "yarn lint"
+     :report "yarn report"
      :format "yarn format"}
     {:start "npm start"
      :cards "npm run cards"
@@ -29,6 +30,7 @@
      :test:watch "npm run test:watch"
      :e2e "npm run e2e"
      :lint "npm run lint"
+     :report "npm run report"
      :format "npm run format"}))
 
 (defn has-binary-on-PATH? [name] (boolean (which name)))

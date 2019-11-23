@@ -46,6 +46,7 @@
         (is (not (fileIncludes "./README.md" "__E2E__")))
         (is (not (fileIncludes "./README.md" "__BUILD__")))
         (is (not (fileIncludes "./README.md" "__LINT__")))
+        (is (not (fileIncludes "./README.md" "__REPORT__")))
         (is (not (fileIncludes "./README.md" "__FORMAT__"))))
       (testing "Commands"
         (is (= (.-code (silent-exec "yarn sc start")) 0) "Should start background server")
@@ -54,5 +55,6 @@
         (is (existsSync "./public/js/main.js"))
         "Should output public/js/main.js")
       (is (= (.-code (silent-exec "yarn e2e")) 0) "Should e2e")
+      (is (= (.-code (silent-exec "yarn report")) 0) "Should report")
       (is (= (.-code (silent-exec "yarn lint")) 0) "Should lint")
       (is (= (.-code (silent-exec "yarn format")) 0) "Should format"))))

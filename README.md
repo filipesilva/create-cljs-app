@@ -105,6 +105,11 @@ You can use it to design, test, and think about parts of your app in isolation.
 
 This environment uses [Devcards](https://github.com/bhauman/devcards) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro).
 
+### `npm run build` or `yarn build`
+
+Builds the app for production to the `public` folder.<br>
+It correctly bundles all code and optimizes the build for the best performance.
+
 ### `npm test` or `yarn test`, and `npm run e2e` or `yarn e2e`
 
 `test` launches the test runner in the interactive watch mode.<br>
@@ -118,10 +123,10 @@ See the ClojureScript [testing page](https://clojurescript.org/tools/testing) fo
 
 `format` will format your code in a consistent manner using [zprint-clj](https://github.com/clj-commons/zprint-clj).
 
-### `npm run build` or `yarn build`
+### `npm run report` or `yarn report`
 
-Builds the app for production to the `public` folder.<br>
-It correctly bundles all code and optimizes the build for the best performance.
+Make a report of what files contribute to your app size.<br>
+Consider [code-splitting](https://code.thheller.com/blog/shadow-cljs/2019/03/03/code-splitting-clojurescript.html) or using smaller libraries to make your app load faster.
 
 ### `npm run server` or `yarn server`
 

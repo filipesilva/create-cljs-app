@@ -11,6 +11,7 @@
     "test": "shadow-cljs compile test && node out/test.js",
     "test:watch": "shadow-cljs watch test --config-merge \"{:autorun true}\"",
     "e2e": "shadow-cljs compile e2e && node out/e2e.js",
+    "report": "shadow-cljs run shadow.cljs.build-report app report.html",
     "lint": "clj-kondo --lint src",
     "format": "zprint-clj --hang -i \"./src/**/*.{clj,cljs,cljc,edn}\" -o ./ && zprint-clj -i \"./*.edn\" -o ./",
     "clean": "rimraf public/js"
