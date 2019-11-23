@@ -1,6 +1,12 @@
 name: Node CI
 
-on: [push, pull_request]
+on:
+  pull_request: ~
+  push:
+    branches:
+    # These are the branches that we want CI to run on direct pushes.
+    # All other changes should go through PRs.
+    - master
 
 jobs:
   test:
