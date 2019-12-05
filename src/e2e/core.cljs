@@ -37,7 +37,7 @@
       (testing "Used template values"
         (is (not (fileIncludes "./package.json" "__NAME__")))
         (is (not (fileIncludes "./public/index.html" "__NAME__")))
-        (is (not (fileIncludes "./src/app/core.cljs" "__NAME__")))
+        (is (not (fileIncludes "./src/app/hello.cljs" "__NAME__")))
         (is (not (fileIncludes "./README.md" "__START__")))
         (is (not (fileIncludes "./README.md" "__CARDS__")))
         (is (not (fileIncludes "./README.md" "__SERVER__")))
