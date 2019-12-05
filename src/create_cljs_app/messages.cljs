@@ -11,7 +11,7 @@
   (.log js/console "\nInitialized a git repository."))
 
 (defn done-msg
-  [name path abs-path commands]
+  [name path abs-path commands install-failed?]
   (.log
     js/console
     (str
@@ -30,7 +30,8 @@ Inside that directory, you can run several commands:
 We suggest that you begin by typing:
 
   " (blue (str "cd " path)) "
-  " (blue (:start commands)) "
+  " (when install-failed? (str (blue (:install commands)) "\n  "))
+      (blue (:start commands)) "
 
 Happy hacking!
 ")))

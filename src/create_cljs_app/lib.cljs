@@ -1,8 +1,9 @@
 (ns create-cljs-app.lib
-  (:require [create-cljs-app.template :refer [use-template]]
+  (:require [cljs.core.async :refer [take!]]
+            [create-cljs-app.template :refer [use-template]]
             [create-cljs-app.utils :refer
              [exit-with-reason get-commands has-java? should-use-git? should-use-yarn?
-              is-supported-node?]]
+              is-supported-node? silent-install]]
             [create-cljs-app.messages :refer
              [begin-msg done-msg init-git-msg install-packages-msg java-warning
               node-error]]
@@ -31,20 +32,23 @@
               (use-template abs-path name commands)
               (.chdir js/process path)
               (install-packages-msg)
-              (exec (if use-yarn "yarn" "npm install"))
-              (when use-git
-                (let [exec-options #js {:silent true :fatal true}]
-                  (try
-                    (exec "git init" exec-options)
-                    (exec "git add -A" exec-options)
-                    (exec
-                      "git commit -m \"Initial commit from Create CLJS App\""
-                      exec-options)
-                    (init-git-msg)
-                    ; Catch and remove the .git directory to not leave it
-                    ; half-done.
-                    (catch js/Object _e (rm "-rf" ".git")))))
-              (when (not (has-java?)) (java-warning))
-              (done-msg name path abs-path commands)))))
+              (take!
+                (silent-install commands)
+                (fn [code]
+                  (let [install-failed? (not= code 0)]
+                    (when use-git
+                      (let [exec-options #js {:silent true :fatal true}]
+                        (try
+                          (exec "git init" exec-options)
+                          (exec "git add -A" exec-options)
+                          (exec
+                            "git commit -m \"Initial commit from Create CLJS App\""
+                            exec-options)
+                          (init-git-msg)
+                          ; Catch and remove the .git directory to not leave it
+                          ; half-done.
+                          (catch js/Object _e (rm "-rf" ".git")))))
+                    (when (not (has-java?)) (java-warning))
+                    (done-msg name path abs-path commands install-failed?))))))))
 
 (def exports #js {:create create})

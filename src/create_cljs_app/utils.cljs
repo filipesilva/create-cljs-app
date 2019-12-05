@@ -1,7 +1,9 @@
 (ns create-cljs-app.utils
-  (:require ["chalk" :refer [red]]
+  (:require [cljs.core.async :refer [go chan <! put!]]
+            ["chalk" :refer [red]]
             ["semver" :refer [coerce satisfies]]
-            ["shelljs" :refer [which]]))
+            ["ora" :as ora]
+            ["shelljs" :refer [exec which]]))
 
 (defn exit-with-reason
   "Show a message in red in the error stream, then exit with code 1."
@@ -12,7 +14,8 @@
 (defn get-commands
   [use-yarn]
   (if use-yarn
-    {:start "yarn start"
+    {:install "yarn"
+     :start "yarn start"
      :cards "yarn cards"
      :server "yarn server"
      :build "yarn build"
@@ -22,7 +25,8 @@
      :lint "yarn lint"
      :report "yarn report"
      :format "yarn format"}
-    {:start "npm start"
+    {:install "npm install"
+     :start "npm start"
      :cards "npm run cards"
      :server "npm run server"
      :build "npm run build"
@@ -42,3 +46,21 @@
 (defn has-java? [] (has-binary-on-PATH? "java"))
 
 (defn is-supported-node? [version] (satisfies (coerce version) ">=10.12.0"))
+
+(defn silent-install
+  "Asynchronously install npm packages while showing a spinner.
+  Returns a channel that contains will receive the exit code.
+  Must be asynchronous otherwise the spinner would not spin."
+  [commands]
+  (let [command (:install commands)
+        spinner (.start (ora "Installing packages..."))
+        c (chan)]
+    ; Note: put! must be used instead of >! because go block analysis stops at
+    ; function boundaries
+    ; https://github.com/clojure/core.async/wiki/Go-Block-Best-Practices#unsupported-constructs-and-other-limitations-in-go-blocks
+    (go (exec command #js {:silent true} #(put! c %))
+        (let [code (<! c)]
+          (if (= code 0)
+            (.succeed spinner "Packages installed successfully.")
+            (.fail spinner (str "Package install failed, please run '" command "' in the app folder.")))
+          code))))
