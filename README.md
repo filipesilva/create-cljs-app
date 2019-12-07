@@ -1,4 +1,4 @@
-# Create CLJS App [![Build Status](https://github.com/filipesilva/create-cljs-app/workflows/Node%20CI/badge.svg)](https://github.com/filipesilva/create-cljs-app/actions)
+# Create CLJS App [![Build Status](https://github.com/filipesilva/create-cljs-app/workflows/Node%20CI/badge.svg?branch=master)](https://github.com/filipesilva/create-cljs-app/actions)
 
 Create ClojureScript apps with a single command.<br>
 It is focused on making it easy for JS and React developers to get started with ClojureScript.
