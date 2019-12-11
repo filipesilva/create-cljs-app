@@ -20,7 +20,7 @@
     "@testing-library/dom": "^6.10.1",
     "@testing-library/react": "^9.3.2",    
     "clj-kondo": "2019.11.23",
-    "highlight.js": "9.16.2",
+    "highlight.js": "9.17.0",
     "jsdom": "^15.2.1",
     "jsdom-global": "^3.0.2",
     "marked": "^0.7.0",    
