@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@testing-library/dom": "^6.10.1",
-    "@testing-library/react": "^9.3.2",    
+    "@testing-library/react": "^9.3.3",    
     "clj-kondo": "2019.11.23",
     "highlight.js": "9.17.0",
     "jsdom": "^15.2.1",
