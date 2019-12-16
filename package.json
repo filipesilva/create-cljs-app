@@ -47,7 +47,7 @@
   "dependencies": {
     "chalk": "^3.0.0",
     "ora": "^4.0.3",
-    "semver": "^6.3.0",
+    "semver": "^7.0.0",
     "shelljs": "^0.8.3"
   },
   "files": [
