@@ -304,10 +304,10 @@ cli-spinners@^2.2.0:
   resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-2.2.0.tgz#e8b988d9206c692302d8ee834e7a85c0144d8f77"
   integrity sha512-tgU3fKwzYjiLEQgPMD9Jt+JjHVL9kW93FiIMX/l7rivvOD4/LL0Mf7gda3+4U2KJBloybwgj5KEoQgGRioMiKQ==
 
-clj-kondo@2019.11.23:
-  version "2019.11.23"
-  resolved "https://registry.yarnpkg.com/clj-kondo/-/clj-kondo-2019.11.23.tgz#c892c593c86090f187694936973991c6a955e7fd"
-  integrity sha512-M3wiZ3vQn89yVDzkX+S+ZEttivYl8aOSO3mqVhx50aNOXvC5+qY+gVaPvS9tVXIGSyWg3FQzYIjbtE0c/Nho8w==
+clj-kondo@2020.1.10:
+  version "2020.1.10"
+  resolved "https://registry.yarnpkg.com/clj-kondo/-/clj-kondo-2020.1.10.tgz#7f5a17510a6380856d443f086f6e89bfb013322d"
+  integrity sha512-qbMqL5UeYhG7HNAD8wrr/LVbg1xam+6o8FJRKJzZKTbOMcwVe0tOfAPnW13jCH9iUjAf06q87VQ7FHx8tnQtzA==
   dependencies:
     binwrap "^0.2.2"
     request "^2.88.0"
