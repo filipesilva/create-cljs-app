@@ -21,7 +21,7 @@
     "@testing-library/react": "^9.4.0",    
     "clj-kondo": "2019.11.23",
     "highlight.js": "9.17.1",
-    "jsdom": "^16.0.0",
+    "jsdom": "^16.0.1",
     "jsdom-global": "^3.0.2",
     "marked": "^0.8.0",    
     "rimraf": "~3.0.0",
