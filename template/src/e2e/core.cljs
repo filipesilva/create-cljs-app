@@ -1,4 +1,5 @@
 (ns e2e.core
+  "This namespace contains your e2e tests and is the entrypoint for 'yarn e2e'."
   (:require [cljs.test :refer-macros [deftest is async use-fixtures]]
             ["http" :as http]
             ["serve-handler" :as serve-handler]
