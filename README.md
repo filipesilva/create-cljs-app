@@ -67,10 +67,7 @@ my-app
 |  └── favicon.ico
 └── src
    ├── app
-   |  ├── cards
-   |  |  ├── devcards_runner.cljs
-   |  |  ├── helpers.cljs        
-   |  |  └── test_runner.cljs    
+   |  ├── cards.cljs
    |  ├── core.cljs
    |  ├── hello.cljs
    |  └── hello_cards.cljs       
