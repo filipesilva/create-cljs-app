@@ -1,11 +1,15 @@
-(ns app.cards.devcards-runner
+(ns app.cards
   (:require [cljsjs.react]
             [cljsjs.react.dom]
             ; devcards needs cljsjs.react and cljsjs.react.dom to be imported
             ; separately for shadow-cljs to add shims.
             [devcards.core :refer [start-devcard-ui!]]
+            ["jsdom-global" :as jsdom-global]
             ; Import all namespaces with cards here to load them.
             [app.hello-cards]))
+
+; Set jsdom to mock a dom environment for node testing.
+(jsdom-global)
 
 (defn ^:export main
   "Start the devcards UI."

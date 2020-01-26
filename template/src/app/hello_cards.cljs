@@ -3,8 +3,15 @@
             [devcards.core :as dc :refer [defcard deftest]]
             [cljs.test :include-macros true :refer [is]]
             ["@testing-library/react" :refer [render cleanup fireEvent]]
-            [app.hello :refer [click-counter hello]]
-            [app.cards.helpers :refer [testing-container]]))
+            [app.hello :refer [click-counter hello]]))
+
+(defn testing-container
+  "The container that should be used to render testing-library react components.
+  We want to provide our own container so that the rendered devcards aren't used."
+  []
+  (let [app-div (js/document.createElement "div")]
+    (.setAttribute app-div "id" "testing-lib")
+    (js/document.body.appendChild app-div)))
 
 (defcard
   "This is a live interactive development environment using [Devcards](https://github.com/bhauman/devcards).

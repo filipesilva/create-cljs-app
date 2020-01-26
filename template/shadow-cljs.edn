@@ -4,11 +4,11 @@
         :output-dir "public/js"
         :target :browser}
   :cards {:asset-path "/js"
-          :modules {:main {:init-fn app.cards.devcards-runner/main}}
+          :modules {:main {:init-fn app.cards/main}}
           :compiler-options {:devcards true}
           :output-dir "public/js"
           :target :browser}
-  :test {:main app.cards.test-runner/main
+  :test {:ns-regexp "app.cards"
          :output-to "out/test.js"
          :target :node-test}
   :e2e {:ns-regexp "e2e.*"
