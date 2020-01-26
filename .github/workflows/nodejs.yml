@@ -16,6 +16,9 @@ jobs:
         os: [ubuntu-latest, macOS-latest, windows-latest]
     steps:
     - uses: actions/checkout@v1
+    # # Move this action to just before the failing step to debug it.
+    # - name: Setup tmate session for remote debugging
+    #   uses: mxschmitt/action-tmate@v1    
     - name: Cache node_modules
       uses: actions/cache@v1
       with:
