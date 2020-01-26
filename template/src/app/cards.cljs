@@ -1,4 +1,6 @@
 (ns app.cards
+  "This namespace contains devcards and tests, and is the entrypoint for 
+  both 'yarn cards' and 'yarn test'."
   (:require [cljsjs.react]
             [cljsjs.react.dom]
             ; devcards needs cljsjs.react and cljsjs.react.dom to be imported
