@@ -26,7 +26,7 @@
     "marked": "^0.8.0",    
     "rimraf": "~3.0.2",
     "serve-handler": "~6.1.2",
-    "shadow-cljs": "~2.8.89",
+    "shadow-cljs": "~2.8.90",
     "taiko": "~1.0.4",
     "taiko-diagnostics": "~0.4.0",
     "zprint-clj": "~0.8.0"
