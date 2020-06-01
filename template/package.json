@@ -27,7 +27,7 @@
     "rimraf": "~3.0.2",
     "serve-handler": "~6.1.2",
     "shadow-cljs": "~2.8.94",
-    "taiko": "~1.0.6",
+    "taiko": "~1.0.11",
     "taiko-diagnostics": "~0.4.0",
     "zprint-clj": "~0.8.0"
   },
