@@ -18,22 +18,22 @@
   },
   "devDependencies": {
     "@testing-library/dom": "^7.7.3",
-    "@testing-library/react": "^10.0.4",    
+    "@testing-library/react": "^10.0.4",
     "clj-kondo": "2020.01.13",
     "highlight.js": "10.0.3",
     "jsdom": "^16.2.2",
     "jsdom-global": "^3.0.2",
-    "marked": "^1.1.0",    
+    "marked": "^1.1.0",
     "rimraf": "~3.0.2",
     "serve-handler": "~6.1.2",
-    "shadow-cljs": "~2.9.10",
+    "shadow-cljs": "~2.10.4",
     "taiko": "~1.0.11",
     "taiko-diagnostics": "~0.4.0",
     "zprint-clj": "~0.8.0"
   },
   "dependencies": {
-    "create-react-class": "~15.6.3",
-    "react": "~16.8.0",
-    "react-dom": "~16.8.0"
+    "create-react-class": "15.6.3",
+    "react": "~16.13.1",
+    "react-dom": "~16.13.1"
   }
 }
