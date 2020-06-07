@@ -7,15 +7,18 @@
           :modules {:main {:init-fn app.cards/main}}
           :compiler-options {:devcards true}
           :output-dir "public/js"
-          :target :browser}
+          :target :browser
+          ;; Workaround for https://github.com/bhauman/devcards/issues/168
+          :build-options {:ns-aliases {devcards-marked cljsjs.marked
+                                       devcards-syntax-highlighter cljsjs.highlight}}}
   :test {:ns-regexp "app.cards"
          :output-to "out/test.js"
          :target :node-test}
   :e2e {:ns-regexp "e2e.*"
         :output-to "out/e2e.js"
         :target :node-test}}
- :dependencies [[reagent "0.8.1"]
-                [devcards "0.2.6"]]
+ :dependencies [[reagent "0.10.0"]
+                [devcards "0.2.7"]]
  :dev-http {3000 "public"}
  :nrepl {:port 3333}
  :source-paths ["src"]}
