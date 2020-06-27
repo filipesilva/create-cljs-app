@@ -5,12 +5,12 @@
              [copyFileSync mkdirSync readdirSync readFileSync statSync writeFileSync]]))
 
 (def template-dir
-  "Path there template files are."
+  "Path where template files are."
   (join js/__dirname ".." "template"))
 
 (def template-ignores
   "UNIX-style paths from the template dir to ignore. Mostly leftovers from template development."
-  #{".shadow-cljs" "node_modules" "out" "yarn.lock" "public/js"})
+  #{})
 
 (defn get-template-values-map
   "List of string replacements to perform in files while copying.
