@@ -45,7 +45,7 @@
     "zprint-clj": "^0.8.0"
   },
   "dependencies": {
-    "chalk": "^4.0.0",
+    "chalk": "^4.1.0",
     "ora": "^4.0.3",
     "semver": "^7.2.1",
     "shelljs": "^0.8.3"
