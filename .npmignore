@@ -1,0 +1,9 @@
+node_modules
+out
+test*/
+.shadow-cljs
+.nrepl-port
+yarn-error.log
+template/yarn.lock
+template/package-lock.json
+.clj-kondo/.cache
