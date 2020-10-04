@@ -13,12 +13,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macOS-latest, windows-latest]
     steps:
     - uses: actions/checkout@v1
     # # Move this action to just before the failing step to debug it.
     # - name: Setup tmate session for remote debugging
-    #   uses: mxschmitt/action-tmate@v1    
+    #   uses: mxschmitt/action-tmate@v3 
     - name: Cache node_modules
       uses: actions/cache@v1
       with:
@@ -39,20 +39,20 @@ jobs:
         node-version: '12.x'
     - name: Install
       run: yarn
-    # - name: Lint
-    #   run: yarn lint
-    # - name: Start background server
-    #   run: yarn sc start
+    - name: Lint
+      run: yarn lint
+    - name: Start background server
+      run: yarn sc start
     - name: Build
       run: yarn build
-    # - name: Test
-    #   run: yarn test:once
-    # - name: E2E
-    #   run: yarn e2e
+    - name: Test
+      run: yarn test:once
+    - name: E2E
+      run: yarn e2e
     - name: Archive Production Artifact
       # Only upload the Linux build.
       if: matrix.os == 'ubuntu-latest'    
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@master
       with:
         name: dist
         path: dist
@@ -64,29 +64,20 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Download Artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: dist
-    - name: Setup tmate session for remote debugging
-      uses: mxschmitt/action-tmate@v3
-    - name: Display structure of downloaded files
-      run: ls -R
-      working-directory: dist
+      uses: actions/download-artifact@master
     - name: Semantic Release
       uses: cycjimmy/semantic-release-action@v2
       id: semantic
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    # Test the release if one was made.
+    # Would be nice to group these steps on the `if` conditional, but no way to do it yet.
+    - name: Use Node.js 12.x
+      if: steps.semantic.outputs.new_release_published == 'true'
+      uses: actions/setup-node@v1
       with:
-        dry_run: true
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    # # Test the release if one was made.
-    # # Would be nice to group these steps on the `if` conditional, but no way to do it yet.
-    # - name: Use Node.js 12.x
-    #   if: steps.semantic.outputs.new_release_published == 'true'
-    #   uses: actions/setup-node@v1
-    #   with:
-    #     node-version: '10.x'
-    # - name: Try to use release
-    #   if: steps.semantic.outputs.new_release_published == 'true'
-    #   run: yarn create cljs-app my-cljs-app
+        node-version: '10.x'
+    - name: Try to use release
+      if: steps.semantic.outputs.new_release_published == 'true'
+      run: yarn create cljs-app my-cljs-app
