@@ -2,7 +2,7 @@
   (:require [clojure.string :refer [replace]]
             ["path" :refer [dirname join]]
             ["fs" :refer
-             [copyFileSync mkdirSync readdirSync readFileSync statSync writeFileSync]]))
+             [copyFileSync mkdirSync readdirSync readFileSync statSync writeFileSync renameSync]]))
 
 (def template-dir
   "Path there template files are."
@@ -69,6 +69,13 @@ Will likely need to be replaced with a proper templating library."
       (copy-template from-abs to-abs template-values)
       (copyFileSync from-abs to-abs))))
 
+(defn- rename-file
+  [from to path]
+  (let [from-abs (join path from)
+        to-abs (join path to)]
+    (mkdirSync (dirname to-abs) #js {:recursive true})
+    (renameSync from-abs to-abs)))
+
 (defn copy-files
   "Copy files from one directory to another, preserving folder structure."
   [files from to template-values-map]
@@ -80,4 +87,5 @@ Will likely need to be replaced with a proper templating library."
   (copy-files (list-files template-dir template-ignores)
               template-dir
               app-path
-              (get-template-values-map name commands)))
+              (get-template-values-map name commands))
+  (rename-file "gitignore" ".gitignore" app-path))

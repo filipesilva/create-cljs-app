@@ -34,6 +34,8 @@
         (is (not (existsSync "./.shadow-cljs")))
         (is (not (existsSync "./out")))
         (is (not (existsSync "./public/js"))))
+      (testing "Copies .gitignore"
+        (is (existsSync "./.gitignore")))
       (testing "Used template values"
         (is (not (fileIncludes "./package.json" "__NAME__")))
         (is (not (fileIncludes "./public/index.html" "__NAME__")))
