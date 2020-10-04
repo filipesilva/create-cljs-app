@@ -52,7 +52,7 @@ jobs:
     - name: Archive Production Artifact
       # Only upload the Linux build.
       if: matrix.os == 'ubuntu-latest'    
-      uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@v2
       with:
         name: dist
         path: dist
@@ -64,7 +64,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Download Artifact
-      uses: actions/download-artifact@master
+      uses: actions/download-artifact@v2
     - name: Semantic Release
       uses: cycjimmy/semantic-release-action@v2
       id: semantic
