@@ -97,7 +97,7 @@ You can [import npm libraries](https://shadow-cljs.github.io/docs/UsersGuide.htm
 
 ### `npm run cards` or `yarn cards`
 
-Runs the interactive live development enviroment.<br>
+Runs the interactive live development environment.<br>
 You can use it to design, test, and think about parts of your app in isolation.
 
 This environment uses [Devcards](https://github.com/bhauman/devcards) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro).
