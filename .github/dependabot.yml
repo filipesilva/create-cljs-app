@@ -1,0 +1,46 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
+  versioning-strategy: increase
+  ignore:
+  - dependency-name: shadow-cljs
+    versions:
+    - 2.11.11
+    - 2.11.15
+  - dependency-name: ora
+    versions:
+    - 5.2.0
+- package-ecosystem: npm
+  directory: "/template"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
+  versioning-strategy: increase
+  ignore:
+  - dependency-name: "@testing-library/dom"
+    versions:
+    - 7.29.1
+    - 7.29.4
+  - dependency-name: marked
+    versions:
+    - 1.2.7
+    - 1.2.8
+  - dependency-name: "@testing-library/react"
+    versions:
+    - 11.2.2
+    - 11.2.3
+  - dependency-name: taiko
+    versions:
+    - 1.1.1
+    - 1.1.4
+  - dependency-name: shadow-cljs
+    versions:
+    - 2.11.11
+    - 2.11.15
+  - dependency-name: highlight.js
+    versions:
+    - 10.5.0
