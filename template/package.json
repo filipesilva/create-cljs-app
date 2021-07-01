@@ -17,7 +17,7 @@
     "clean": "rimraf public/js"
   },
   "devDependencies": {
-    "@testing-library/dom": "^7.19.0",
+    "@testing-library/dom": "^8.0.0",
     "@testing-library/react": "^10.4.3",    
     "clj-kondo": "2020.11.7",
     "highlight.js": "10.1.1",
