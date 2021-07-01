@@ -40,7 +40,7 @@
   "homepage": "https://github.com/filipesilva/create-cljs-app#readme",
   "devDependencies": {
     "clj-kondo": "2020.01.13",
-    "shadow-cljs": "^2.11.4",
+    "shadow-cljs": "^2.14.5",
     "shx": "^0.3.2",
     "zprint-clj": "^0.8.0"
   },
