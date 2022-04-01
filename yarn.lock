@@ -294,10 +294,10 @@ cli-spinners@^2.4.0:
   resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-2.4.0.tgz#c6256db216b878cfba4720e719cec7cf72685d7f"
   integrity sha512-sJAofoarcm76ZGpuooaO0eDy8saEy+YoZBLjC4h8srt4jeBnkYeOgqxgsJQTpyt2LjI5PTfLJHSL+41Yu4fEJA==
 
-clj-kondo@2020.01.13:
-  version "2020.1.13"
-  resolved "https://registry.yarnpkg.com/clj-kondo/-/clj-kondo-2020.1.13.tgz#bffe0dde83169f3b7a605f459f835cbf90ef9347"
-  integrity sha512-hLKi4toY3UFe1WnuX/HGr2e3PWEt4++7286Jiv/nyBoy1zcEopz7k+e0XnjX5GkxFUgXv1KrIyHQ3eM4+iW2dw==
+clj-kondo@2022.3.9:
+  version "2022.3.9"
+  resolved "https://registry.yarnpkg.com/clj-kondo/-/clj-kondo-2022.3.9.tgz#957c567620daf3e9837817cbbee954046f47025b"
+  integrity sha512-/0hMIYDXbfsFyYJyF5Z470XseAbR6Ta3qajHCkaX8Mco9Ogiei5y50mr8HP1O5SvC1OrHT7tU/Qp/I0GyXBQ6w==
   dependencies:
     binwrap "^0.2.2"
     request "^2.88.0"
@@ -448,7 +448,7 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-elliptic@6.5.3, elliptic@^6.0.0:
+elliptic@^6.0.0:
   version "6.5.3"
   resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.3.tgz#cb59eb2efdaf73a0bd78ccd7015a62ad6e0f93d6"
   integrity sha512-IMqzv5wNQf+E6aHeIqATs0tOLeOTwj1QKbRcS3jBbYkl5oLAserA8yJTT7/VyHUYG91PRmPyeQDObKLPpeS4dw==
