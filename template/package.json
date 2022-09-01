@@ -19,7 +19,7 @@
   "devDependencies": {
     "@testing-library/dom": "^7.19.0",
     "@testing-library/react": "^10.4.3",    
-    "clj-kondo": "2020.11.7",
+    "clj-kondo": "2022.8.3",
     "highlight.js": "10.1.1",
     "jsdom": "^16.2.2",
     "jsdom-global": "^3.0.2",
